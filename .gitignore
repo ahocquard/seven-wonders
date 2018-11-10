@@ -31,7 +31,6 @@ proguard/
 #Gradle
 .gradletasknamecache
 .gradle/
-gradle/
 build/
 out/
 gradlew.bat
