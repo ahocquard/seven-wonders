@@ -15,12 +15,12 @@ package io.github.ahocquard.sevenwonders.game.domain.resource
  *
  * This data class is immutable: adding an element will generate another instance of this data class.
  */
-data class ProducedResources(val producedResources: List<List<Resource>> = ArrayList(emptyList())) {
+data class ProducedResources(val producedResourcesCombinations: List<List<Resource>> = listOf(emptyList())) {
     fun addNewProducedResource(produceOneOf: ProduceOneOf): ProducedResources {
         val combinations = ArrayList<List<Resource>>()
 
         produceOneOf.resources.forEach { addedResource ->
-            producedResources.forEach { combination ->
+            producedResourcesCombinations.forEach { combination ->
                 val newCombination = combination.toMutableList()
                 newCombination.add(addedResource)
 
@@ -34,7 +34,7 @@ data class ProducedResources(val producedResources: List<List<Resource>> = Array
     fun addNewProducedResource(produceAll: ProduceAll): ProducedResources {
         val combinations = ArrayList<List<Resource>>()
 
-        producedResources.forEach { combination ->
+        producedResourcesCombinations.forEach { combination ->
             val newCombination = combination.toMutableList()
             newCombination.addAll(produceAll.resources)
 
@@ -42,5 +42,18 @@ data class ProducedResources(val producedResources: List<List<Resource>> = Array
         }
 
         return ProducedResources(combinations)
+    }
+
+    fun isProducingResources(resourcesToProduce: List<Resource>): Boolean {
+        val groupedByResourcesToProduce = resourcesToProduce.groupingBy { it }.eachCount()
+        val combinationsGroupByResources =  this.producedResourcesCombinations.map {
+            combination -> combination.groupingBy { it }.eachCount()
+        }
+
+        return combinationsGroupByResources.filter { combination->
+            groupedByResourcesToProduce.filter { resourcesToProduce ->
+                !combination.containsKey(resourcesToProduce.key) || combination.getValue(resourcesToProduce.key) < resourcesToProduce.value
+            }.isEmpty()
+        }.isNotEmpty()
     }
 }
