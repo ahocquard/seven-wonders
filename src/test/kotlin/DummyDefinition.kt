@@ -3,7 +3,7 @@ package cucumber
 import cucumber.api.Scenario
 import cucumber.api.java8.En
 
-class DummyDefinition: En {
+class DummyDefinition : En {
 
     init {
         Before { scenario: Scenario ->
