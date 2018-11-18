@@ -1,5 +1,5 @@
 package io.github.ahocquard.sevenwonders.game.domain.resource
 
-data class Coins(val number: Int) {
-
+enum class Age {
+    AGE_1, AGE_2, AGE_3
 }
