@@ -46,11 +46,11 @@ data class ProducedResources(val producedResourcesCombinations: List<List<Resour
 
     fun isProducingResources(resourcesToProduce: List<Resource>): Boolean {
         val groupedByResourcesToProduce = resourcesToProduce.groupingBy { it }.eachCount()
-        val combinationsGroupByResources =  this.producedResourcesCombinations.map {
+        val combinationsGroupByResources = this.producedResourcesCombinations.map {
             combination -> combination.groupingBy { it }.eachCount()
         }
 
-        return combinationsGroupByResources.filter { combination->
+        return combinationsGroupByResources.filter { combination ->
             groupedByResourcesToProduce.filter { resourcesToProduce ->
                 !combination.containsKey(resourcesToProduce.key) || combination.getValue(resourcesToProduce.key) < resourcesToProduce.value
             }.isEmpty()

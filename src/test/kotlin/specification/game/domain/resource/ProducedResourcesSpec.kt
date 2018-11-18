@@ -4,8 +4,6 @@ import io.github.ahocquard.sevenwonders.game.domain.resource.ProduceAll
 import io.github.ahocquard.sevenwonders.game.domain.resource.ProduceOneOf
 import io.github.ahocquard.sevenwonders.game.domain.resource.ProducedResources
 import io.github.ahocquard.sevenwonders.game.domain.resource.Resource
-import io.kotlintest.matchers.containAll
-import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 

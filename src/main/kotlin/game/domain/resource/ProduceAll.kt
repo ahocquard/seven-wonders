@@ -8,5 +8,4 @@ package io.github.ahocquard.sevenwonders.game.domain.resource
  *
  * @see ProduceOneOf
  */
-class ProduceAll(val resources: List<Resource>) {
-}
+class ProduceAll(val resources: List<Resource>)
