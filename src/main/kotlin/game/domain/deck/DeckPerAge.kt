@@ -48,7 +48,6 @@ class DeckPerAge {
             Card(Name("Market Place"), StructureType.COMMERCIAL, Cost.free(), emptyList(), 3, Age.AGE_1),
             Card(Name("Market Place"), StructureType.COMMERCIAL, Cost.free(), emptyList(), 6, Age.AGE_1),
 
-
             Card(Name("Stockade"), StructureType.MILITARY, Cost(resources = listOf(Resource.WOOD)), emptyList(), 3, Age.AGE_1),
             Card(Name("Stockade"), StructureType.MILITARY, Cost(resources = listOf(Resource.WOOD)), emptyList(), 7, Age.AGE_1),
             Card(Name("Barracks"), StructureType.MILITARY, Cost(resources = listOf(Resource.ORE)), emptyList(), 3, Age.AGE_1),
@@ -209,7 +208,6 @@ class DeckPerAge {
                 7,
                 Age.AGE_2
             ),
-
 
             Card(
                 Name("Walls"),

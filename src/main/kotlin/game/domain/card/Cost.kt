@@ -8,6 +8,6 @@ package io.github.ahocquard.sevenwonders.game.domain.resource
  */
 data class Cost(val coins: Coins = Coins(0), val resources: List<Resource> = emptyList(), val chainedBy: Name? = null) {
     companion object {
-        fun free(): Cost = Cost(coins = Coins(0),resources = emptyList(), chainedBy = null)
+        fun free(): Cost = Cost(coins = Coins(0), resources = emptyList(), chainedBy = null)
     }
 }
