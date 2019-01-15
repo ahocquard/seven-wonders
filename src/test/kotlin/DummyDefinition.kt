@@ -1,4 +1,4 @@
-package cucumber
+package io.github.ahocquard.sevenwonders
 
 import cucumber.api.Scenario
 import cucumber.api.java8.En
