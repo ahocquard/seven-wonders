@@ -10,7 +10,7 @@ import io.mockk.confirmVerified
 import io.mockk.spyk
 import io.mockk.verify
 
-class CommandDispatcherSpecification : StringSpec({
+class CommandDispatcherSpec : StringSpec({
     "it dispatches a command to the appropriate handler" {
         val command = SimpleCommand()
         val commandHandler = spyk(SimpleCommandHandler())
