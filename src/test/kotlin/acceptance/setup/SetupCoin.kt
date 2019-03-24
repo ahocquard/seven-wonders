@@ -1,4 +1,4 @@
-package io.github.ahocquard.sevenwonders.context.setup
+package io.github.ahocquard.sevenwonders.acceptance.setup
 
 import cucumber.api.java8.En
 import game.domain.game.repository.GameRepository
@@ -7,7 +7,7 @@ import io.github.ahocquard.sevenwonders.game.application.command.StartNewGameHan
 import io.kotlintest.shouldBe
 import player.infrastructure.game.inmemory.InMemoryGameRepository
 
-class SetupCoinDefinition : En {
+class SetupCoin : En {
     private var numberPlayers: Int = 4
     private lateinit var gameRepository: GameRepository
 
