@@ -1,23 +1,27 @@
 package io.github.ahocquard.sevenwonders.context.setup
 
 import cucumber.api.java8.En
-import io.github.ahocquard.sevenwonders.game.domain.player.Player
+import game.domain.game.repository.GameRepository
+import io.github.ahocquard.sevenwonders.game.application.command.StartNewGame
+import io.github.ahocquard.sevenwonders.game.application.command.StartNewGameHandler
+import io.kotlintest.shouldBe
+import player.infrastructure.game.inmemory.InMemoryGameRepository
 
 class SetupCoinDefinition : En {
+    private var numberPlayers: Int = 4
+    private lateinit var gameRepository: GameRepository
+
     init {
 
         Given("several players") {
-            val players = listOf(Player(), Player());
-        }
-
-        Given("the {int} Wonders board of the game") { int1: Int ->
-            // Write code here that turns the phrase above into concrete actions
-            throw cucumber.api.PendingException()
+            numberPlayers = 4
         }
 
         When("the players want to start a new game") {
-            // Write code here that turns the phrase above into concrete actions
-            throw cucumber.api.PendingException()
+            val command = StartNewGame(numberPlayers)
+            gameRepository = InMemoryGameRepository()
+            val commandHandler = StartNewGameHandler(gameRepository)
+            commandHandler.invoke(command)
         }
 
         Then("each player has a Wonders board randomly picked") {
@@ -30,9 +34,9 @@ class SetupCoinDefinition : En {
             throw cucumber.api.PendingException()
         }
 
-        Then("each player has {int} coins") { int1: Int ->
+        Then("each player has {int} coins") { numberCoins: Int ->
             // Write code here that turns the phrase above into concrete actions
-            throw cucumber.api.PendingException()
+            gameRepository.getGame().players.filter { it.coins.number != numberCoins } shouldBe emptyList()
         }
 
         Given("a number of players between {int} and {int}") { int1: Int, int2: Int ->
