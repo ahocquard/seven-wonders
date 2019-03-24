@@ -29,11 +29,12 @@ task cucumber(dependsOn: testClasses) {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.+"
-    testCompile "org.jetbrains.kotlin:kotlin-reflect:1.3.+"
 
-    testCompile 'io.kotlintest:kotlintest-runner-junit5:3.1.+'
-    testCompile 'io.cucumber:cucumber-java8:4.2.+'
-    testCompile 'io.cucumber:cucumber-junit:4.2.+'
+    testImplementation "io.mockk:mockk:1.9.+"
+    compile "org.jetbrains.kotlin:kotlin-reflect:1.3.+"
+    testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.1.+'
+    testImplementation 'io.cucumber:cucumber-java8:4.2.+'
+    testImplementation 'io.cucumber:cucumber-junit:4.2.+'
 }
 
 compileKotlin {
